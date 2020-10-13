@@ -28,9 +28,10 @@ const App: React.FC = () => {
   return (
     <StateProvider initialState={initState} reducer={reducer}>
       <div className="app">
-        <BrowserRouter>
-          <NavComponent />
-        </BrowserRouter>
+        <NavComponent />
+        <div>fawefaw</div>
+
+        <BrowserRouter></BrowserRouter>
       </div>
     </StateProvider>
   );

@@ -1,8 +1,65 @@
+@import "../../constants/colors.scss";
+$nav-bg-light: #fff;
+$nav-text-light: #222;
+$nav-bg-dark: #222;
+$nav-text-dark: #999;
+$button-bg-dark: #444;
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 1px 3px #999;
+
+  h3 {
+    margin: 1rem 0;
+  }
+
+  button:focus {
+    outline: none;
+  }
+
+  a,
+  a:visited {
+    box-sizing: border-box;
+    text-decoration: none;
+
+    &:focus,
+    &:active,
+    &:hover {
+      outline: none;
+      filter: brightness(0.8);
+      box-shadow: inset 0 -2px $theme-color-main;
+    }
+  }
+}
+
 .nav {
   &-light {
-    background-color: white;
+    background-color: $nav-bg-light;
+    color: $nav-text-light;
+    a,
+    a:visited {
+      color: $nav-text-light;
+    }
   }
   &-dark {
-    background-color: black;
+    background-color: $nav-bg-dark;
+    color: $nav-text-dark;
+    a,
+    a:visited {
+      color: $nav-text-dark;
+    }
+    button {
+      background-color: $button-bg-dark;
+      color: $nav-text-dark;
+    }
+  }
+
+  &-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 }
