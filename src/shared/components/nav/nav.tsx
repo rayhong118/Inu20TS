@@ -1,14 +1,17 @@
 import React from "react";
 import "./nav.scss";
+import firebase from "firebase/app";
 import { useStateValue } from "../../tools/state";
 import { ACTION_CHANGE_THEME, THEME_DARK, THEME_LIGHT } from "../../constants/theme";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
-import { faAdjust } from "@fortawesome/free-solid-svg-icons";
+import { faAdjust, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Nav: React.FC = (props) => {
   const [{ theme }, dispatch] = useStateValue();
+  const [user, isAuthLoading, error] = useAuthState(firebase.auth());
   const changeTheme = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
     dispatch({
@@ -36,9 +39,21 @@ const Nav: React.FC = (props) => {
           {theme === THEME_LIGHT ? "Dark Mode " : "Light Mode "}
           <FontAwesomeIcon icon={faAdjust} />
         </a>
-        <NavLink to={"./auth"}>
-          Sign In <FontAwesomeIcon icon={faUserCircle} />
-        </NavLink>
+        {isAuthLoading && (
+          <div className="a-styled">
+            <FontAwesomeIcon icon={faCircleNotch} spin />
+          </div>
+        )}
+        {!isAuthLoading && !user && (
+          <NavLink to={"./auth"}>
+            Sign In <FontAwesomeIcon icon={faUserCircle} />
+          </NavLink>
+        )}
+        {!isAuthLoading && user && (
+          <NavLink to={"./auth"}>
+            Setting <FontAwesomeIcon icon={faUserCircle} />
+          </NavLink>
+        )}
       </span>
     </nav>
   );
