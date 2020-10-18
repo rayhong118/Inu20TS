@@ -11,8 +11,6 @@ import {
 } from "./shared/constants/theme";
 import firebase from "firebase/app";
 
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 import ChatPage from "./pages/chat";
 import HomePage from "./pages/home";
 import AuthPage from "./pages/auth";

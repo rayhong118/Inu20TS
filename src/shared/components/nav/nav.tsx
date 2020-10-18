@@ -3,10 +3,14 @@ import "./nav.scss";
 import { useStateValue } from "../../tools/state";
 import { ACTION_CHANGE_THEME, THEME_DARK, THEME_LIGHT } from "../../constants/theme";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
+import { faAdjust } from "@fortawesome/free-solid-svg-icons";
 
 const Nav: React.FC = (props) => {
   const [{ theme }, dispatch] = useStateValue();
-  const changeTheme = () => {
+  const changeTheme = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    event.preventDefault();
     dispatch({
       type: ACTION_CHANGE_THEME,
       theme: theme === THEME_DARK ? THEME_LIGHT : THEME_DARK,
@@ -19,9 +23,6 @@ const Nav: React.FC = (props) => {
           <h3>Inu20TS</h3>
         </NavLink>
 
-        <NavLink className="nav-link" to={"./auth"}>
-          Auth
-        </NavLink>
         <NavLink className="nav-link" to={"./chat"}>
           Chat
         </NavLink>
@@ -30,9 +31,15 @@ const Nav: React.FC = (props) => {
         </NavLink>
       </span>
 
-      <button onClick={changeTheme}>
-        {theme === THEME_LIGHT ? "Dark Mode" : "Light Mode"}
-      </button>
+      <span className="nav-right">
+        <a href="" onClick={(e) => changeTheme(e)}>
+          {theme === THEME_LIGHT ? "Dark Mode " : "Light Mode "}
+          <FontAwesomeIcon icon={faAdjust} />
+        </a>
+        <NavLink to={"./auth"}>
+          Sign In <FontAwesomeIcon icon={faUserCircle} />
+        </NavLink>
+      </span>
     </nav>
   );
 };
