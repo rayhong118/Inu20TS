@@ -15,8 +15,10 @@ import ChatPage from "./pages/chat";
 import HomePage from "./pages/home";
 import AuthPage from "./pages/auth";
 
+import { firebaseApiKey } from "./keys.json";
+
 firebase.initializeApp({
-  apiKey: "AIzaSyCvYtk0l6XcXLfr7xVhAtN-W8yw0PLTNaA",
+  apiKey: firebaseApiKey,
   authDomain: "dogheadportal.firebaseapp.com",
   databaseURL: "https://dogheadportal.firebaseio.com",
   projectId: "dogheadportal",
