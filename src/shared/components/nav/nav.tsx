@@ -23,10 +23,10 @@ const Nav: React.FC = (props) => {
           <h3>Inu20TS</h3>
         </NavLink>
 
-        <NavLink className="nav-link" to={"./chat"}>
+        <NavLink className="nav-link" activeClassName="nav-link-active" to={"./chat"}>
           Chat
         </NavLink>
-        <NavLink className="nav-link" to={"./more"}>
+        <NavLink className="nav-link" activeClassName="nav-link-active" to={"./more"}>
           More
         </NavLink>
       </span>

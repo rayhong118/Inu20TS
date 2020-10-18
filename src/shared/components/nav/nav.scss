@@ -23,6 +23,23 @@ nav {
   button:focus {
     outline: none;
   }
+
+  .nav-link,
+  .nav-link:visited {
+    box-sizing: border-box;
+    text-decoration: none;
+
+    &:focus,
+    &:active,
+    &:hover {
+      outline: none;
+      filter: brightness(0.8);
+      box-shadow: inset 0 -2px $theme-color-main;
+    }
+  }
+  .nav-link-active {
+    font-weight: 500;
+  }
 }
 
 .nav {
@@ -55,18 +72,5 @@ nav {
   &-right {
     display: flex;
     gap: 0.5rem;
-  }
-  .nav-link,
-  .nav-link:visited {
-    box-sizing: border-box;
-    text-decoration: none;
-
-    &:focus,
-    &:active,
-    &:hover {
-      outline: none;
-      filter: brightness(0.8);
-      box-shadow: inset 0 -2px $theme-color-main;
-    }
   }
 }
