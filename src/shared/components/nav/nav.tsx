@@ -2,6 +2,7 @@ import React from "react";
 import "./nav.scss";
 import { useStateValue } from "../../tools/state";
 import { ACTION_CHANGE_THEME, THEME_DARK, THEME_LIGHT } from "../../constants/theme";
+import { NavLink } from "react-router-dom";
 
 const Nav: React.FC = (props) => {
   const [{ theme }, dispatch] = useStateValue();
@@ -14,9 +15,19 @@ const Nav: React.FC = (props) => {
   return (
     <nav className={`${theme === THEME_LIGHT ? "nav-light" : "nav-dark"}`}>
       <span className="nav-left">
-        <h3>Inu20TS</h3>
-        <a href="#">Chat</a>
-        <a href="#">More</a>
+        <NavLink to={"./"}>
+          <h3>Inu20TS</h3>
+        </NavLink>
+
+        <NavLink className="nav-link" to={"./auth"}>
+          Auth
+        </NavLink>
+        <NavLink className="nav-link" to={"./chat"}>
+          Chat
+        </NavLink>
+        <NavLink className="nav-link" to={"./more"}>
+          More
+        </NavLink>
       </span>
 
       <button onClick={changeTheme}>
