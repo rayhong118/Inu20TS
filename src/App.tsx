@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
 import { BrowserRouter, Route } from "react-router-dom";
-import NavComponent from "./shared/components/nav";
+
 import { StateProvider } from "./shared/tools/state";
 import {
   ACTION_CHANGE_THEME,
@@ -9,23 +9,28 @@ import {
   THEME_DARK,
   THEME_LIGHT,
 } from "./shared/constants/theme";
-import firebase from "firebase/app";
-
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
+import "firebase/firestore";
+import "firebase/functions";
+import NavComponent from "./shared/components/nav";
 import ChatPage from "./pages/chat";
 import HomePage from "./pages/home";
 import AuthPage from "./pages/auth";
 
 import { firebaseApiKey } from "./keys.json";
 
-firebase.initializeApp({
+const config = {
   apiKey: firebaseApiKey,
   authDomain: "dogheadportal.firebaseapp.com",
   databaseURL: "https://dogheadportal.firebaseio.com",
   projectId: "dogheadportal",
   storageBucket: "dogheadportal.appspot.com",
   messagingSenderId: "978501106081",
-  appId: "1:978501106081:web:2a161377b5922e7b08b3e0",
-});
+  appId: "1:978501106081:web:6630866d2d7dc22408b3e0",
+};
+firebase.initializeApp(config);
 
 const App: React.FC = () => {
   const initState = {
@@ -57,4 +62,5 @@ const App: React.FC = () => {
   );
 };
 
+export { firebase };
 export default App;

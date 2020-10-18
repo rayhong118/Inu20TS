@@ -1,7 +1,7 @@
 import "firebase/firestore";
 import firebase from "firebase/app";
 import React, { useState } from "react";
-import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 export const ChatPageComponent = () => {
   const [selectedRoom, selectRoom] = useState("");
