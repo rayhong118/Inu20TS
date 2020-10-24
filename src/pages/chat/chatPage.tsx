@@ -20,9 +20,9 @@ export const ChatPageComponent = () => {
 
   if (user)
     return (
-      <div>
+      <div className="chat-container">
         {loading ? (
-          <FontAwesomeIcon icon={faCircleNotch} />
+          <FontAwesomeIcon icon={faCircleNotch} spin />
         ) : (
           <ChatRoomComponent messages={messages || []} user={user} room={roomRef} />
         )}

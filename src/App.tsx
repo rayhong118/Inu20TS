@@ -50,14 +50,15 @@ const App: React.FC = () => {
 
   return (
     <StateProvider initialState={initState} reducer={appReducer}>
-      <div className="app">
-        <BrowserRouter>
+      <BrowserRouter>
+        <div className="app">
           <NavComponent />
+
           <Route path="/" exact component={HomePage} />
           <Route path="/auth" component={AuthPage} />
           <Route path="/chat" component={ChatPage} />
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     </StateProvider>
   );
 };

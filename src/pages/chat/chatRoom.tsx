@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
-import React, { useState } from "react";
-
+import React, { createRef, useEffect, useState } from "react";
+import "./chat.scss";
 interface ChatRoomProps {
   messages: ChatMessage[];
   user: firebase.User;
@@ -16,17 +16,23 @@ interface ChatMessage {
 
 const ChatRoomComponent = (props: ChatRoomProps) => {
   const [inputVal, setInputVal] = useState("");
-
+  const bottomOfChat = createRef<HTMLDivElement>();
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setInputVal(value);
   };
+
+  const scrollToBottom = () => {
+    bottomOfChat.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(scrollToBottom, [props.messages]);
 
   const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputVal.length) {
       console.log("send");
       const { uid, photoURL } = props.user;
+      setInputVal("");
       await props.room.add({
         text: inputVal,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -34,21 +40,29 @@ const ChatRoomComponent = (props: ChatRoomProps) => {
         photoURL,
       });
       setInputVal("");
+      // bottomOfChat.current?.scrollIntoView(true);
     }
+  };
+
+  const setMessageType = (uid: string | undefined) => {
+    if (uid) return uid === props.user.uid ? "sent" : "received";
+    else return "notification";
   };
 
   return (
     <div className="chat-room">
-      <div>
+      <div className="chat-messages">
         {props.messages.map((msg, index) => {
           return (
-            <div key={"msg" + index} className={msg.uid || "notification"}>
+            <div key={"msg" + index} className={setMessageType(msg.uid)}>
               {msg.photoURL && <img src={msg.photoURL} />}
               {msg.text}
             </div>
           );
         })}
+        <div ref={bottomOfChat} />
       </div>
+
       <form onSubmit={(e) => sendMessage(e)}>
         <input onChange={(e) => handleInput(e)} value={inputVal} />
         <button>Send</button>
