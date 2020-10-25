@@ -18,15 +18,20 @@ export const ChatPageComponent = () => {
     idField: "id",
   });
 
-  if (user)
+  if (!loading)
     return (
       <div className="chat-container">
-        {loading ? (
-          <FontAwesomeIcon icon={faCircleNotch} spin />
-        ) : (
+        {user ? (
           <ChatRoomComponent messages={messages || []} user={user} room={roomRef} />
+        ) : (
+          <div>not validated</div>
         )}
       </div>
     );
-  else return <div>not validated</div>;
+  else
+    return (
+      <div className="chat-container">
+        <FontAwesomeIcon icon={faCircleNotch} spin />
+      </div>
+    );
 };
