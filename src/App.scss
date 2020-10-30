@@ -1,5 +1,12 @@
+@import "../src/shared/constants/themes.scss";
+
 .app {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+body {
+  @include theme-aware("background-color", "color-bg");
+  @include theme-aware("color", "color-text");
 }

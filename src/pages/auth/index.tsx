@@ -14,13 +14,13 @@ const AuthPage = () => {
 
   if (!user)
     return (
-      <div>
+      <div className="page">
         <button onClick={AuthWithGoogle}>Auth with google</button>
       </div>
     );
   else
     return (
-      <div>
+      <div className="page">
         {user?.email}
         <br />
         <button onClick={signOut}>Sign out</button>

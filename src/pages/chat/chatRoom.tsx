@@ -54,11 +54,12 @@ const ChatRoomComponent = (props: ChatRoomProps) => {
       <div className="chat-messages">
         {props.messages.map((msg, index) => {
           return (
-            <div className={"message-container " + setMessageType(msg.uid)}>
+            <div
+              key={"msg" + index}
+              className={"message-container " + setMessageType(msg.uid)}
+            >
               {msg.photoURL && <img src={msg.photoURL} />}
-              <div key={"msg" + index} className="message-text">
-                {msg.text}
-              </div>
+              <div className="message-text">{msg.text}</div>
             </div>
           );
         })}

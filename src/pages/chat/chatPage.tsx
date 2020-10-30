@@ -20,7 +20,7 @@ export const ChatPageComponent = () => {
 
   if (!loading)
     return (
-      <div className="chat-container">
+      <div className="chat-container page">
         {user ? (
           <ChatRoomComponent messages={messages || []} user={user} room={roomRef} />
         ) : (
@@ -30,7 +30,7 @@ export const ChatPageComponent = () => {
     );
   else
     return (
-      <div className="chat-container">
+      <div className="chat-container page">
         <FontAwesomeIcon icon={faCircleNotch} spin />
       </div>
     );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./nav.scss";
 import firebase from "firebase/app";
 import { useStateValue } from "../../tools/state";
@@ -13,12 +13,21 @@ const Nav: React.FC = (props) => {
   const [{ theme }, dispatch] = useStateValue();
   const [user, isAuthLoading, error] = useAuthState(firebase.auth());
   const changeTheme = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    document.documentElement.className = "";
+    document.documentElement.classList.add(
+      theme === THEME_DARK ? THEME_LIGHT : THEME_DARK
+    );
     event.preventDefault();
     dispatch({
       type: ACTION_CHANGE_THEME,
       theme: theme === THEME_DARK ? THEME_LIGHT : THEME_DARK,
     });
   };
+
+  useEffect(() => {
+    document.documentElement.className = theme;
+  }, []);
+
   return (
     <nav className={`${theme === THEME_LIGHT ? "nav-light" : "nav-dark"}`}>
       <span className="nav-left">

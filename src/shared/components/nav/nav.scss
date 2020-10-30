@@ -6,11 +6,12 @@ $nav-text-dark: #999;
 $button-bg-dark: #444;
 
 nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.25rem 5%;
-  box-shadow: 0 1px 3px #999;
+  box-shadow: 0 1px 3px rgba(153, 153, 153, 0.5);
 
   h3 {
     margin: 0.5rem 0;
