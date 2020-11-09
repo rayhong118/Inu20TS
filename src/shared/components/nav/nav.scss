@@ -10,7 +10,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.25rem 5%;
+  padding: 0 5%;
   box-shadow: 0 1px 3px rgba(153, 153, 153, 0.5);
 
   h3 {
@@ -44,6 +44,10 @@ nav {
   .nav-link-active {
     font-weight: 500;
   }
+
+  #mobileMenu {
+    display: none;
+  }
 }
 
 .nav {
@@ -52,6 +56,11 @@ nav {
     color: $nav-text-light;
     a,
     a:visited {
+      background-color: white;
+      color: $nav-text-light;
+    }
+    button {
+      background-color: white;
       color: $nav-text-light;
     }
   }
@@ -60,6 +69,7 @@ nav {
     color: $nav-text-dark;
     a,
     a:visited {
+      background-color: $nav-bg-dark;
       color: $nav-text-dark;
     }
     button {
@@ -76,5 +86,40 @@ nav {
   &-right {
     display: flex;
     gap: 0.5rem;
+  }
+}
+
+@media (hover: none), (max-width: 800px) {
+  nav {
+    .nav-left {
+      .nav-link {
+        display: none;
+      }
+    }
+    .nav-right {
+      display: none;
+    }
+    #mobileMenu {
+      display: block;
+    }
+  }
+}
+
+// mobile menu component
+#mobileMenu {
+  background-color: inherit;
+}
+#mobileMenuBody {
+  position: absolute;
+  top: 3.125rem;
+  right: 2px;
+  box-shadow: 0 1px 3px rgba(153, 153, 153, 0.5);
+  display: flex;
+  flex-direction: column;
+  background-color: inherit;
+
+  a {
+    padding: 1rem 2rem;
+    margin-bottom: 2px;
   }
 }
