@@ -58,7 +58,7 @@ const ChatRoomComponent = (props: ChatRoomProps) => {
               key={"msg" + index}
               className={"message-container " + setMessageType(msg.uid)}
             >
-              {msg.photoURL && <img src={msg.photoURL} />}
+              {msg.photoURL && <img src={msg.photoURL} alt="user icon" />}
               <div className="message-text">{msg.text}</div>
             </div>
           );
