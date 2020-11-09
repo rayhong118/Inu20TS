@@ -3,7 +3,7 @@ import "./nav.scss";
 import firebase from "firebase/app";
 import { useStateValue } from "../../tools/state";
 import { ACTION_CHANGE_THEME, THEME_DARK, THEME_LIGHT } from "../../constants/theme";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -32,6 +32,12 @@ const Nav: React.FC = (props) => {
 
   useEffect(() => {
     document.documentElement.className = theme;
+    window.onclick = (e: MouseEvent) => {
+      console.log((e.target as HTMLElement).classList);
+      if ((e.target as HTMLElement).classList.contains("mobile-menu-button")) {
+        setMenuDisplayed(false);
+      }
+    };
   }, []);
 
   return (
@@ -86,31 +92,31 @@ const Nav: React.FC = (props) => {
         </button>
         {menuDisplayed && (
           <div id="mobileMenuBody">
-            <a href="" onClick={(e) => changeTheme(e)}>
+            <a className="mobile-menu-button" href="" onClick={(e) => changeTheme(e)}>
               <FontAwesomeIcon icon={faAdjust} />
               {theme === THEME_LIGHT ? " Dark Mode " : " Light Mode "}
             </a>
             {isAuthLoading && (
-              <div className="a-styled">
+              <div className="mobile-menu-button">
                 <FontAwesomeIcon icon={faCircleNotch} spin />
               </div>
             )}
             {!isAuthLoading && !user && (
-              <NavLink to={"./auth"}>
+              <Link className="mobile-menu-button" to={"./auth"}>
                 <FontAwesomeIcon icon={faUserCircle} /> Sign In
-              </NavLink>
+              </Link>
             )}
             {!isAuthLoading && user && (
-              <NavLink to={"./auth"}>
+              <Link className="mobile-menu-button" to={"./auth"}>
                 <FontAwesomeIcon icon={faUserCircle} /> Setting
-              </NavLink>
+              </Link>
             )}
-            <NavLink activeClassName="nav-link-active" to={"./chat"}>
+            <Link className="mobile-menu-button" to={"./chat"}>
               Chat
-            </NavLink>
-            <NavLink activeClassName="nav-link-active" to={"./more"}>
+            </Link>
+            <Link className="mobile-menu-button" to={"./more"}>
               More
-            </NavLink>
+            </Link>
           </div>
         )}
       </div>
