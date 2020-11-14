@@ -33,7 +33,6 @@ const Nav: React.FC = (props) => {
   useEffect(() => {
     document.documentElement.className = theme;
     window.onclick = (e: MouseEvent) => {
-      console.log((e.target as HTMLElement).classList);
       if ((e.target as HTMLElement).classList.contains("mobile-menu-button")) {
         setMenuDisplayed(false);
       }

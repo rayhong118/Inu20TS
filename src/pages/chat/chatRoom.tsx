@@ -30,7 +30,6 @@ const ChatRoomComponent = (props: ChatRoomProps) => {
   const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputVal.length) {
-      console.log("send");
       const { uid, photoURL } = props.user;
       setInputVal("");
       await props.room.add({

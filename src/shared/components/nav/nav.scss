@@ -39,6 +39,7 @@ nav {
       outline: none;
       filter: brightness(0.8);
       box-shadow: inset 0 -2px $theme-color-main;
+      background-color: rgba(0, 0, 0, 0);
     }
   }
   .nav-link-active {
@@ -119,7 +120,7 @@ nav {
   background-color: inherit;
 
   a {
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     margin-bottom: 2px;
   }
 }
