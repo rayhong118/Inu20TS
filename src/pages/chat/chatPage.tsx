@@ -1,9 +1,8 @@
 import "firebase/firestore";
 import firebase from "firebase/app";
 import React, { useState } from "react";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { ChatMessage, ChatRoomComponent } from "./chatRoom";
+import { ChatRoomComponent } from "./chatRoom";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -13,42 +12,53 @@ interface ChatRoomInfo {
 }
 
 export const ChatPageComponent = () => {
-  const [selectedRoom, selectRoom] = useState("message");
+  const [selectedRoom, selectRoom] = useState("");
   const [user, isAuthLoading, authError] = useAuthState(firebase.auth());
-  const firestore = firebase.firestore();
-  const roomRef = firestore.collection(selectedRoom);
-  const query = roomRef.orderBy("createdAt");
-
-  const [messages, loading, error] = useCollectionData<ChatMessage>(query, {
-    idField: "id",
-  });
 
   const listOfRooms: ChatRoomInfo[] = [
     { id: "message", name: "Message" },
     { id: "test1", name: "Test1" },
   ];
 
-  if (!loading && user)
+  if (user)
     return (
       <div className="chat-container page">
-        <div className="chat-rooms-list">
+        <div className={!!selectedRoom ? "chat-rooms-list" : "chat-rooms-list"}>
           {listOfRooms.map((roomInfo) => {
             return (
               <button
-                className="chat-room-select"
+                className={
+                  selectedRoom === roomInfo.id ? "chat-room-selected" : "chat-room-select"
+                }
                 onClick={() => {
                   selectRoom(roomInfo.id);
                 }}
+                key={roomInfo.id}
               >
                 {roomInfo.name}
               </button>
             );
           })}
         </div>
-        <ChatRoomComponent messages={messages || []} user={user} room={roomRef} />
+        {selectedRoom ? (
+          <div className={selectedRoom ? "chat-room-active" : "chat-room"}>
+            <button
+              onClick={() => {
+                selectRoom("");
+              }}
+            >
+              Back
+            </button>
+            <ChatRoomComponent user={user} roomName={selectedRoom} />
+          </div>
+        ) : (
+          <div className={selectedRoom ? "chat-room-active" : "chat-room"}>
+            Please select a room
+          </div>
+        )}
       </div>
     );
-  else if (!loading) return <div>not validated</div>;
+  else if (!isAuthLoading) return <div>not validated</div>;
   else
     return (
       <div className="chat-container page">

@@ -1,4 +1,5 @@
 @import "../../constants/colors.scss";
+@import "../../constants/themes.scss";
 $nav-bg-light: #fff;
 $nav-text-light: #222;
 $nav-bg-dark: #222;
@@ -90,7 +91,7 @@ nav {
   }
 }
 
-@media (hover: none), (max-width: 800px) {
+@media (hover: none), (max-width: $mobile-desktop-breakpoint) {
   nav {
     .nav-left {
       .nav-link {
