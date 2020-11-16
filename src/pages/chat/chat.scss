@@ -3,8 +3,7 @@
 .chat-container,
 .chat-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+
   flex: 1 1 auto;
   overflow: hidden;
   padding: 2rem 4rem;
@@ -35,10 +34,23 @@
 .chat-room-active {
   display: flex;
   flex-direction: column;
+
   height: 100%;
   width: 100%;
   justify-content: center;
   align-items: center;
+  .action-bar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    border: 1px $text-dark solid;
+    border-style: inset;
+    button,
+    b {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+  }
 
   .chat-messages {
     width: 100%;

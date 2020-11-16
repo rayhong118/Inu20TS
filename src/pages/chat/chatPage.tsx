@@ -3,7 +3,12 @@ import firebase from "firebase/app";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ChatRoomComponent } from "./chatRoom";
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleLeft,
+  faArrowLeft,
+  faBackward,
+  faCircleNotch,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface ChatRoomInfo {
@@ -42,13 +47,17 @@ export const ChatPageComponent = () => {
         </div>
         {selectedRoom ? (
           <div className={selectedRoom ? "chat-room-active" : "chat-room"}>
-            <button
-              onClick={() => {
-                selectRoom("");
-              }}
-            >
-              Back
-            </button>
+            <div className="action-bar">
+              <button
+                onClick={() => {
+                  selectRoom("");
+                }}
+              >
+                <FontAwesomeIcon icon={faAngleLeft} />
+              </button>
+              <b>{listOfRooms.find((room) => room.id === selectedRoom)?.name}</b>
+            </div>
+
             <ChatRoomComponent user={user} roomName={selectedRoom} />
           </div>
         ) : (
