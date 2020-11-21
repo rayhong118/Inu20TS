@@ -51,7 +51,6 @@ const ChatRoomComponent = (props: ChatRoomProps) => {
         uid,
         photoURL,
       });
-      setInputVal("");
       // bottomOfChat.current?.scrollIntoView(true);
     }
   };
@@ -62,11 +61,10 @@ const ChatRoomComponent = (props: ChatRoomProps) => {
   };
   if (loading)
     return (
-      <>
-        {" "}
+      <div className="chat-messages-placeholder">
         <FontAwesomeIcon icon={faCircleNotch} spin />
         loading
-      </>
+      </div>
     );
   else if (error) return <>{error}</>;
   else

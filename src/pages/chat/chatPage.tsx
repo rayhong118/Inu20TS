@@ -3,12 +3,7 @@ import firebase from "firebase/app";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ChatRoomComponent } from "./chatRoom";
-import {
-  faAngleLeft,
-  faArrowLeft,
-  faBackward,
-  faCircleNotch,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface ChatRoomInfo {

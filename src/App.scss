@@ -17,7 +17,6 @@ body {
   width: 4px;
   height: 4px;
 }
-
 /* Track */
 ::-webkit-scrollbar-track {
   background: rgba(64, 64, 64, 0);
@@ -31,4 +30,10 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+@media (max-width: $mobile-desktop-breakpoint) {
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
 }
