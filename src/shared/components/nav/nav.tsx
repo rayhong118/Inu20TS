@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./nav.scss";
 import firebase from "firebase/app";
 import { useStateValue } from "../../tools/state";
-import { ACTION_CHANGE_THEME, THEME_DARK, THEME_LIGHT } from "../../constants/theme";
+import {
+  ACTION_CHANGE_THEME,
+  THEME_DARK,
+  THEME_LIGHT,
+} from "../../constants/theme";
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
@@ -18,7 +22,9 @@ const Nav: React.FC = (props) => {
   const [{ theme }, dispatch] = useStateValue();
   const [menuDisplayed, setMenuDisplayed] = useState(false);
   const [user, isAuthLoading, error] = useAuthState(firebase.auth());
-  const changeTheme = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const changeTheme = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
     document.documentElement.className = "";
     document.documentElement.classList.add(
       theme === THEME_DARK ? THEME_LIGHT : THEME_DARK
@@ -33,9 +39,12 @@ const Nav: React.FC = (props) => {
   useEffect(() => {
     document.documentElement.className = theme;
     window.onclick = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).classList.contains("mobile-menu-button")) {
-        setMenuDisplayed(false);
-      }
+      if (
+        (e.target as HTMLElement).classList.contains("mobileMenuTrigger") &&
+        !menuDisplayed
+      ) {
+        setMenuDisplayed(true);
+      } else setMenuDisplayed(false);
     };
   }, []);
 
@@ -46,17 +55,25 @@ const Nav: React.FC = (props) => {
           <h3>Inu20TS</h3>
         </NavLink>
 
-        <NavLink className="nav-link" activeClassName="nav-link-active" to={"./chat"}>
+        <NavLink
+          className="nav-link"
+          activeClassName="nav-link-active"
+          to={"./chat"}
+        >
           Chat
         </NavLink>
-        <NavLink className="nav-link" activeClassName="nav-link-active" to={"./more"}>
-          More
+        <NavLink
+          className="nav-link"
+          activeClassName="nav-link-active"
+          to={"./restaurants"}
+        >
+          Restaurants
         </NavLink>
       </span>
 
       <span className="nav-right">
         <a href="" onClick={(e) => changeTheme(e)}>
-          {theme === THEME_LIGHT ? "Dark Mode " : "Light Mode "}
+          {theme === THEME_LIGHT ? "Dark Mode" : "Light Mode"}
           <FontAwesomeIcon icon={faAdjust} />
         </a>
         {isAuthLoading && (
@@ -66,12 +83,14 @@ const Nav: React.FC = (props) => {
         )}
         {!isAuthLoading && !user && (
           <NavLink to={"./auth"}>
-            Sign In <FontAwesomeIcon icon={faUserCircle} />
+            Sign In
+            <FontAwesomeIcon icon={faUserCircle} />
           </NavLink>
         )}
         {!isAuthLoading && user && (
           <NavLink to={"./auth"}>
-            Setting <FontAwesomeIcon icon={faUserCircle} />
+            Setting
+            <FontAwesomeIcon icon={faUserCircle} />
           </NavLink>
         )}
       </span>
@@ -79,6 +98,7 @@ const Nav: React.FC = (props) => {
       <div id="mobileMenu">
         <button
           id="mobileMenuTrigger"
+          className="mobileMenuTrigger"
           onClick={() => {
             setMenuDisplayed(!menuDisplayed);
           }}
@@ -86,14 +106,18 @@ const Nav: React.FC = (props) => {
           {menuDisplayed ? (
             <FontAwesomeIcon icon={faTimes} />
           ) : (
-            <FontAwesomeIcon icon={faBars} />
+            <FontAwesomeIcon icon={faBars} className="mobileMenuTrigger" />
           )}
         </button>
         {menuDisplayed && (
           <div id="mobileMenuBody">
-            <a className="mobile-menu-button" href="" onClick={(e) => changeTheme(e)}>
+            <a
+              className="mobile-menu-button"
+              href=""
+              onClick={(e) => changeTheme(e)}
+            >
               <FontAwesomeIcon icon={faAdjust} />
-              {theme === THEME_LIGHT ? " Dark Mode " : " Light Mode "}
+              {theme === THEME_LIGHT ? "Dark Mode" : "Light Mode"}
             </a>
             {isAuthLoading && (
               <div className="mobile-menu-button">
@@ -102,12 +126,14 @@ const Nav: React.FC = (props) => {
             )}
             {!isAuthLoading && !user && (
               <Link className="mobile-menu-button" to={"./auth"}>
-                <FontAwesomeIcon icon={faUserCircle} /> Sign In
+                <FontAwesomeIcon icon={faUserCircle} />
+                Sign In
               </Link>
             )}
             {!isAuthLoading && user && (
               <Link className="mobile-menu-button" to={"./auth"}>
-                <FontAwesomeIcon icon={faUserCircle} /> Setting
+                <FontAwesomeIcon icon={faUserCircle} />
+                Setting
               </Link>
             )}
             <Link className="mobile-menu-button" to={"./chat"}>
