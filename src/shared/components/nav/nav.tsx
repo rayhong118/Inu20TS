@@ -38,15 +38,19 @@ const Nav: React.FC = (props) => {
 
   useEffect(() => {
     document.documentElement.className = theme;
+
     window.onclick = (e: MouseEvent) => {
-      if (
-        (e.target as HTMLElement).classList.contains("mobileMenuTrigger") &&
-        !menuDisplayed
-      ) {
-        setMenuDisplayed(true);
-      } else setMenuDisplayed(false);
+      if (menuDisplayed) {
+        setMenuDisplayed(false);
+      }
     };
-  }, []);
+  }, [menuDisplayed]);
+
+  const routesList = [
+    { name: "Chat", link: "./chat" },
+    { name: "Restaurants", link: "./restaurants" },
+    { name: "Comics", link: "./comics" },
+  ];
 
   return (
     <nav className={`${theme === THEME_LIGHT ? "nav-light" : "nav-dark"}`}>
@@ -54,21 +58,16 @@ const Nav: React.FC = (props) => {
         <NavLink id="logo" to={"./"}>
           <h3>Inu20TS</h3>
         </NavLink>
-
-        <NavLink
-          className="nav-link"
-          activeClassName="nav-link-active"
-          to={"./chat"}
-        >
-          Chat
-        </NavLink>
-        <NavLink
-          className="nav-link"
-          activeClassName="nav-link-active"
-          to={"./restaurants"}
-        >
-          Restaurants
-        </NavLink>
+        {routesList.map((route) => (
+          <NavLink
+            className="nav-link"
+            activeClassName="nav-link-active"
+            to={route.link}
+            key={route.name}
+          >
+            {route.name}
+          </NavLink>
+        ))}
       </span>
 
       <span className="nav-right">
@@ -114,7 +113,10 @@ const Nav: React.FC = (props) => {
             <a
               className="mobile-menu-button"
               href=""
-              onClick={(e) => changeTheme(e)}
+              onClick={(e) => {
+                changeTheme(e);
+                setMenuDisplayed(false);
+              }}
             >
               <FontAwesomeIcon icon={faAdjust} />
               {theme === THEME_LIGHT ? "Dark Mode" : "Light Mode"}
@@ -125,23 +127,35 @@ const Nav: React.FC = (props) => {
               </div>
             )}
             {!isAuthLoading && !user && (
-              <Link className="mobile-menu-button" to={"./auth"}>
+              <Link
+                className="mobile-menu-button"
+                to={"./auth"}
+                onClick={() => setMenuDisplayed(false)}
+              >
                 <FontAwesomeIcon icon={faUserCircle} />
                 Sign In
               </Link>
             )}
             {!isAuthLoading && user && (
-              <Link className="mobile-menu-button" to={"./auth"}>
+              <Link
+                className="mobile-menu-button"
+                to={"./auth"}
+                onClick={() => setMenuDisplayed(false)}
+              >
                 <FontAwesomeIcon icon={faUserCircle} />
                 Setting
               </Link>
             )}
-            <Link className="mobile-menu-button" to={"./chat"}>
-              Chat
-            </Link>
-            <Link className="mobile-menu-button" to={"./more"}>
-              More
-            </Link>
+            {routesList.map((route) => (
+              <Link
+                className="mobile-menu-button"
+                to={route.link}
+                key={route.name}
+                onClick={() => setMenuDisplayed(false)}
+              >
+                {route.name}
+              </Link>
+            ))}
           </div>
         )}
       </div>
