@@ -44,7 +44,7 @@ const Nav: React.FC = (props) => {
         setMenuDisplayed(false);
       }
     };
-  }, [menuDisplayed]);
+  }, [menuDisplayed, theme]);
 
   const routesList = [
     { name: "Chat", link: "./chat" },
