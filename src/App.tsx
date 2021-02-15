@@ -35,7 +35,9 @@ firebase.initializeApp(config);
 const App: React.FC = () => {
   const initState = {
     theme:
-      localStorage.getItem(LOCAL_STORAGE_THEME) === THEME_DARK ? THEME_DARK : THEME_LIGHT,
+      localStorage.getItem(LOCAL_STORAGE_THEME) === THEME_DARK
+        ? THEME_DARK
+        : THEME_LIGHT,
   };
 
   const appReducer = (state: any, action: any) => {
@@ -55,6 +57,7 @@ const App: React.FC = () => {
           <NavComponent />
 
           <Route path="/" exact component={HomePage} />
+          <Route path="/home" exact component={HomePage} />
           <Route path="/auth" component={AuthPage} />
           <Route path="/chat" component={ChatPage} />
         </div>

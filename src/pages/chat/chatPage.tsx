@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { ChatRoomComponent } from "./chatRoom";
 import { faAngleLeft, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import NotValidated from "../../shared/components/notValidated";
 
 interface ChatRoomInfo {
   id: string;
@@ -28,7 +29,9 @@ export const ChatPageComponent = () => {
             return (
               <button
                 className={
-                  selectedRoom === roomInfo.id ? "chat-room-selected" : "chat-room-select"
+                  selectedRoom === roomInfo.id
+                    ? "chat-room-selected"
+                    : "chat-room-select"
                 }
                 onClick={() => {
                   selectRoom(roomInfo.id);
@@ -50,7 +53,9 @@ export const ChatPageComponent = () => {
               >
                 <FontAwesomeIcon icon={faAngleLeft} />
               </button>
-              <b>{listOfRooms.find((room) => room.id === selectedRoom)?.name}</b>
+              <b>
+                {listOfRooms.find((room) => room.id === selectedRoom)?.name}
+              </b>
             </div>
 
             <ChatRoomComponent user={user} roomName={selectedRoom} />
@@ -62,7 +67,7 @@ export const ChatPageComponent = () => {
         )}
       </div>
     );
-  else if (!isAuthLoading) return <div>not validated</div>;
+  else if (!isAuthLoading) return <NotValidated />;
   else
     return (
       <div className="chat-container page">
