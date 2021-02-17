@@ -57,29 +57,29 @@ nav {
 
 .nav {
   &-light {
-    background-color: $nav-bg-light;
-    color: $nav-text-light;
+    background-color: $bg-light;
+    color: $text-light;
     a,
     a:visited {
       background-color: white;
-      color: $nav-text-light;
+      color: $text-light;
     }
     button {
       background-color: white;
-      color: $nav-text-light;
+      color: $text-light;
     }
   }
   &-dark {
-    background-color: $nav-bg-dark;
-    color: $nav-text-dark;
+    background-color: $bg-dark;
+    color: $text-dark;
     a,
     a:visited {
-      background-color: $nav-bg-dark;
-      color: $nav-text-dark;
+      background-color: $bg-dark;
+      color: $text-dark;
     }
     button {
       background-color: $button-bg-dark;
-      color: $nav-text-dark;
+      color: $text-dark;
     }
   }
 

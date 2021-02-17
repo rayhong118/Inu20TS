@@ -23,3 +23,11 @@ $themes: (
 }
 
 $mobile-desktop-breakpoint: 800px;
+
+$page-side-spacing: 5%;
+$page-top-spacing: 2rem;
+
+.page {
+  overflow: hidden;
+  padding: $page-top-spacing $page-side-spacing;
+}
