@@ -9,14 +9,20 @@ const AuthPage = () => {
   const [user, isAuthLoading, error] = useAuthState(firebase.auth());
   const [{ theme }, dispatch] = useStateValue();
 
+  const handleAuthError = (err: Error) => {
+    console.log(err.message);
+  };
+
   const AuthWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider);
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .catch((err) => handleAuthError(err));
   };
 
   const AuthWithGitHub = () => {
     const provider = new firebase.auth.GithubAuthProvider();
-    firebase.auth().signInWithPopup(provider);
   };
   const signOut = () => {
     firebase.auth().signOut();

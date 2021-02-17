@@ -88,7 +88,7 @@ const Nav: React.FC = (props) => {
         )}
         {!isAuthLoading && user && (
           <NavLink to={"./auth"}>
-            Setting
+            Account
             <FontAwesomeIcon icon={faUserCircle} />
           </NavLink>
         )}
@@ -143,7 +143,7 @@ const Nav: React.FC = (props) => {
                 onClick={() => setMenuDisplayed(false)}
               >
                 <FontAwesomeIcon icon={faUserCircle} />
-                Setting
+                Account
               </Link>
             )}
             {routesList.map((route) => (
