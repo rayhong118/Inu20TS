@@ -53,6 +53,7 @@ const AuthPage = () => {
     firebase
       .auth()
       .signOut()
+      .then(() => history.push("/"))
       .catch((err) => {
         handleAuthError(err);
       });
@@ -84,7 +85,7 @@ const AuthPage = () => {
           <img
             className="profile-img"
             alt="User profile"
-            src="{user.photoURL}"
+            src={user?.photoURL?.toString()}
           />
           {user?.email}
           <br />
