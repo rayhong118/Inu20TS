@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import firebase from "firebase/app";
 import React, { createRef, useEffect, useState } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+
 import "./chat.scss";
 interface ChatRoomProps {
   user: firebase.User;

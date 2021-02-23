@@ -1,11 +1,14 @@
 import "firebase/firestore";
 import firebase from "firebase/app";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ChatRoomComponent } from "./chatRoom";
 import { faAngleLeft, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NotValidated from "../../shared/components/notValidated";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { AppState } from "../../redux/store";
 
 interface ChatRoomInfo {
   id: string;
@@ -14,14 +17,21 @@ interface ChatRoomInfo {
 
 export const ChatPageComponent = () => {
   const [selectedRoom, selectRoom] = useState("");
-  const [user, isAuthLoading, authError] = useAuthState(firebase.auth());
 
   const listOfRooms: ChatRoomInfo[] = [
     { id: "message", name: "Message" },
     { id: "test1", name: "Test1" },
   ];
 
-  if (user)
+  const { credential } = useSelector((state: AppState) => ({
+    ...state.authReducer,
+  }));
+  const history = useHistory();
+  useEffect(() => {
+    if (!credential) history.push("/auth?fromUrl=/chat");
+  }, [credential]);
+
+  if (credential)
     return (
       <div className="chat-container page">
         <div className={!!selectedRoom ? "chat-rooms-list" : "chat-rooms-list"}>
@@ -58,7 +68,7 @@ export const ChatPageComponent = () => {
               </b>
             </div>
 
-            <ChatRoomComponent user={user} roomName={selectedRoom} />
+            <ChatRoomComponent user={credential} roomName={selectedRoom} />
           </div>
         ) : (
           <div className={selectedRoom ? "chat-room-active" : "chat-room"}>
@@ -67,7 +77,6 @@ export const ChatPageComponent = () => {
         )}
       </div>
     );
-  else if (!isAuthLoading) return <NotValidated />;
   else
     return (
       <div className="chat-container page">

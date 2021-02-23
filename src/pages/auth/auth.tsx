@@ -8,10 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AppState } from "../../redux/store";
 import { setUserCredential } from "../../redux/actions/auth";
+import qs from "query-string";
 
 const AuthPage = () => {
   const [user, isAuthLoading, error] = useAuthState(firebase.auth());
   const [displayAuthRequired, setDisplayAuthRequired] = useState(false);
+  const [redirUrl, setRedirUrl] = useState("");
   const history = useHistory();
   const { credential } = useSelector((state: AppState) => ({
     ...state.authReducer,
@@ -20,11 +22,17 @@ const AuthPage = () => {
 
   useEffect(() => {
     let fromUrl = queryString.parse(history.location.search).fromUrl;
-    if (fromUrl) setDisplayAuthRequired(true);
+    if (fromUrl) {
+      setDisplayAuthRequired(true);
+      setRedirUrl(fromUrl.toString());
+    }
   }, []);
 
   useEffect(() => {
     dispatch(setUserCredential(user || null));
+    if (user && redirUrl) {
+      history.push(`${redirUrl}`);
+    }
   }, [user, dispatch]);
 
   const handleAuthError = (err: Error) => {
@@ -36,7 +44,6 @@ const AuthPage = () => {
     firebase
       .auth()
       .signInWithPopup(provider)
-
       .catch((err) => handleAuthError(err));
   };
 
@@ -45,7 +52,6 @@ const AuthPage = () => {
     firebase
       .auth()
       .signInWithPopup(provider)
-
       .catch((err) => handleAuthError(err));
   };
 
