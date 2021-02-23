@@ -1,8 +1,8 @@
 import React from "react";
-import { ChatPageComponent } from "./chatPage";
+import { ChatPage } from "./chatPage";
 import "./chat.scss";
-const ChatPage = () => {
-  return <ChatPageComponent />;
+const ChatPageComponent = () => {
+  return <ChatPage />;
 };
 
 export default ChatPage;

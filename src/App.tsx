@@ -21,6 +21,7 @@ import AuthPage from "./pages/auth";
 
 import { firebaseApiKey } from "./keys.json";
 import { ROUTES } from "./shared/constants/routes";
+import Alert from "./shared/components/alert";
 
 const config = {
   apiKey: firebaseApiKey,
@@ -61,6 +62,7 @@ const App: React.FC = () => {
           <Route path={ROUTES.HOME} exact component={HomePage} />
           <Route path={ROUTES.AUTH} component={AuthPage} />
           <Route path={ROUTES.CHAT} component={ChatPage} />
+          <Alert />
         </div>
       </BrowserRouter>
     </StateProvider>

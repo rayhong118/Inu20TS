@@ -13,7 +13,7 @@ interface ChatRoomInfo {
   name: string;
 }
 
-export const ChatPageComponent = () => {
+export const ChatPage = () => {
   const [selectedRoom, selectRoom] = useState("");
 
   const listOfRooms: ChatRoomInfo[] = [
