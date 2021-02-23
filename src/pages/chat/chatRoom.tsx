@@ -39,7 +39,9 @@ const ChatRoomComponent = (props: ChatRoomProps) => {
   const scrollToBottom = () => {
     bottomOfChat.current?.scrollIntoView({ behavior: "smooth" });
   };
-  useEffect(scrollToBottom, [messages]);
+
+  // eslint-disable-next-line
+  useEffect(() => scrollToBottom(), [messages]);
 
   const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

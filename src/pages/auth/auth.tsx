@@ -24,14 +24,14 @@ const AuthPage = () => {
     if (fromUrl) {
       setDisplayAuthRequired(true);
       setRedirUrl(fromUrl.toString());
-    }
+    } // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     dispatch(setUserCredential(user));
     if (user && redirUrl) {
       history.push(`${redirUrl}`);
-    }
+    } // eslint-disable-next-line
   }, [user, dispatch]);
 
   const handleAuthError = (err: Error) => {

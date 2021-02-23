@@ -1,11 +1,8 @@
 import "firebase/firestore";
-import firebase from "firebase/app";
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { ChatRoomComponent } from "./chatRoom";
 import { faAngleLeft, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import NotValidated from "../../shared/components/notValidated";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AppState } from "../../redux/store";
@@ -31,6 +28,7 @@ export const ChatPageComponent = () => {
   useEffect(() => {
     console.log("credential", credential);
     if (!credential) history.push(`${ROUTES.AUTH}?fromUrl=/chat`);
+    // eslint-disable-next-line
   }, []);
 
   if (credential)
