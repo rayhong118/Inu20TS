@@ -9,6 +9,7 @@ import NotValidated from "../../shared/components/notValidated";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AppState } from "../../redux/store";
+import { ROUTES } from "../../shared/constants/routes";
 
 interface ChatRoomInfo {
   id: string;
@@ -28,8 +29,9 @@ export const ChatPageComponent = () => {
   }));
   const history = useHistory();
   useEffect(() => {
-    if (!credential) history.push("/auth?fromUrl=/chat");
-  }, [credential]);
+    console.log("credential", credential);
+    if (!credential) history.push(`${ROUTES.AUTH}?fromUrl=/chat`);
+  }, []);
 
   if (credential)
     return (

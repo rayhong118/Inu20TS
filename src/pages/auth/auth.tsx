@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AppState } from "../../redux/store";
 import { setUserCredential } from "../../redux/actions/auth";
-import qs from "query-string";
 
 const AuthPage = () => {
   const [user, isAuthLoading, error] = useAuthState(firebase.auth());
@@ -29,7 +28,7 @@ const AuthPage = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(setUserCredential(user || null));
+    dispatch(setUserCredential(user));
     if (user && redirUrl) {
       history.push(`${redirUrl}`);
     }
@@ -59,7 +58,10 @@ const AuthPage = () => {
     firebase
       .auth()
       .signOut()
-      .then(() => history.push("/"))
+      .then(() => {
+        history.push("/");
+        dispatch(setUserCredential(undefined));
+      })
       .catch((err) => {
         handleAuthError(err);
       });

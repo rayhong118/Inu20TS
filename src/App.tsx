@@ -20,6 +20,7 @@ import HomePage from "./pages/home";
 import AuthPage from "./pages/auth";
 
 import { firebaseApiKey } from "./keys.json";
+import { ROUTES } from "./shared/constants/routes";
 
 const config = {
   apiKey: firebaseApiKey,
@@ -57,9 +58,9 @@ const App: React.FC = () => {
           <NavComponent />
 
           <Route path="/" exact component={HomePage} />
-          <Route path="/home" exact component={HomePage} />
-          <Route path="/auth" component={AuthPage} />
-          <Route path="/chat" component={ChatPage} />
+          <Route path={ROUTES.HOME} exact component={HomePage} />
+          <Route path={ROUTES.AUTH} component={AuthPage} />
+          <Route path={ROUTES.CHAT} component={ChatPage} />
         </div>
       </BrowserRouter>
     </StateProvider>
