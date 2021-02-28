@@ -3,7 +3,7 @@ import { AlertObj } from "../../shared/tools/types";
 
 import { SET_ALERT, CLEAR_ALERT } from "../actions/actionTypes";
 
-const initState: AlertObj = {};
+const initState: AlertObj = { duration: 0 };
 
 export const alertReducer: Reducer<AlertObj> = (
   state = initState,

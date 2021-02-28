@@ -1,6 +1,6 @@
 export interface AlertObj {
-  type?: string;
+  type?: "notice" | "success" | "warning";
   iconName?: string;
   message?: string;
-  duration?: number;
+  duration: number;
 }

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AppState } from "../../redux/store";
 import { setUserCredential } from "../../redux/actions/auth";
+import { setAlert } from "../../redux/actions/alert";
 
 const AuthPage = () => {
   const [user, isAuthLoading, error] = useAuthState(firebase.auth());
@@ -36,6 +37,7 @@ const AuthPage = () => {
 
   const handleAuthError = (err: Error) => {
     console.log(err.message);
+    dispatch(setAlert({ duration: 3, message: err.message }));
   };
 
   const AuthWithGoogle = () => {
