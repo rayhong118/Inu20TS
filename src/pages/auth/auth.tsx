@@ -37,7 +37,7 @@ const AuthPage = () => {
 
   const handleAuthError = (err: Error) => {
     console.log(err.message);
-    dispatch(setAlert({ duration: 3, message: err.message }));
+    dispatch(setAlert({ duration: 5, message: err.message }));
   };
 
   const AuthWithGoogle = () => {

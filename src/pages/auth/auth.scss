@@ -1,5 +1,5 @@
-@import "../../shared/constants/colors.scss";
-@import "../../shared/constants/themes.scss";
+@use "../../shared/constants/colors";
+@use "../../shared/constants/themes";
 
 .auth-page {
   height: 100%;

@@ -15,9 +15,9 @@ import "firebase/database";
 import "firebase/firestore";
 import "firebase/functions";
 import NavComponent from "./shared/components/nav";
-import ChatPage from "./pages/chat";
-import HomePage from "./pages/home";
-import AuthPage from "./pages/auth";
+import HomePageComponent from "./pages/home";
+import AuthPageComponent from "./pages/auth";
+import ChatPageComponent from "./pages/chat";
 
 import { firebaseApiKey } from "./keys.json";
 import { ROUTES } from "./shared/constants/routes";
@@ -58,10 +58,10 @@ const App: React.FC = () => {
         <div className="app">
           <NavComponent />
 
-          <Route path="/" exact component={HomePage} />
-          <Route path={ROUTES.HOME} exact component={HomePage} />
-          <Route path={ROUTES.AUTH} component={AuthPage} />
-          <Route path={ROUTES.CHAT} component={ChatPage} />
+          <Route path="/" exact component={HomePageComponent} />
+          <Route path={ROUTES.HOME} exact component={HomePageComponent} />
+          <Route path={ROUTES.AUTH} component={AuthPageComponent} />
+          <Route path={ROUTES.CHAT} component={ChatPageComponent} />
           <Alert />
         </div>
       </BrowserRouter>

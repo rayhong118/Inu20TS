@@ -5,4 +5,4 @@ const ChatPageComponent = () => {
   return <ChatPage />;
 };
 
-export default ChatPage;
+export default ChatPageComponent;
