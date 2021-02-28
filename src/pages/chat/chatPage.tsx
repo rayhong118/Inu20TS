@@ -26,7 +26,6 @@ export const ChatPage = () => {
   }));
   const history = useHistory();
   useEffect(() => {
-    console.log("credential", credential);
     if (!credential) history.push(`${ROUTES.AUTH}?fromUrl=/chat`);
     // eslint-disable-next-line
   }, []);

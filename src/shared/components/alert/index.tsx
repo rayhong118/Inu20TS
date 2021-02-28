@@ -23,7 +23,6 @@ const Alert = () => {
         setFade(false);
       }, durationInMs);
       setTimeout(() => {
-        console.log("setFade");
         setFade(true);
       }, durationInMs - 2000);
     } else {
@@ -35,7 +34,7 @@ const Alert = () => {
   if (alertConfig.duration)
     return (
       <div className={`alert-container ${fade ? "alert-container-fade" : ""}`}>
-        <div className={`alert-box ${alertConfig.type || "warning"}`}>
+        <div className={`alert-box ${alertConfig.type || "notice"}`}>
           {alertConfig.message}
         </div>
       </div>

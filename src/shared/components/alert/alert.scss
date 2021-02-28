@@ -1,4 +1,5 @@
 @use '../../constants/colors';
+@use '../../constants/themes';
 
 .alert-container {
   position: fixed;
@@ -8,7 +9,7 @@
   width: 100%;
   .alert-box {
     font-size: 1.2rem;
-    padding: 1rem;
+    padding: 1rem themes.$page-side-spacing;
     position: relative;
     left: 50%;
     transform: translateX(-50%);

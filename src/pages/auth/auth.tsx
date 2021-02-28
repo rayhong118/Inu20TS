@@ -30,14 +30,24 @@ const AuthPage = () => {
 
   useEffect(() => {
     dispatch(setUserCredential(user));
+
     if (user && redirUrl) {
       history.push(`${redirUrl}`);
     } // eslint-disable-next-line
   }, [user, dispatch]);
 
   const handleAuthError = (err: Error) => {
-    console.log(err.message);
-    dispatch(setAlert({ duration: 5, message: err.message }));
+    dispatch(setAlert({ type: "warning", duration: 5, message: err.message }));
+  };
+
+  const handleAuthSuccess = () => {
+    dispatch(
+      setAlert({
+        type: "success",
+        duration: 5,
+        message: "Sign in successful!",
+      })
+    );
   };
 
   const AuthWithGoogle = () => {
@@ -45,6 +55,9 @@ const AuthPage = () => {
     firebase
       .auth()
       .signInWithPopup(provider)
+      .then(() => {
+        handleAuthSuccess();
+      })
       .catch((err) => handleAuthError(err));
   };
 
@@ -53,6 +66,9 @@ const AuthPage = () => {
     firebase
       .auth()
       .signInWithPopup(provider)
+      .then(() => {
+        handleAuthSuccess();
+      })
       .catch((err) => handleAuthError(err));
   };
 
