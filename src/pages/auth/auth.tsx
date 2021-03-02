@@ -45,7 +45,7 @@ const AuthPage = () => {
       setAlert({
         type: "success",
         duration: 5,
-        message: "Sign in successful!",
+        message: "Authentication successful!",
       })
     );
   };

@@ -1,16 +1,13 @@
-$bg-light: #fff;
-$text-light: #222;
-$bg-dark: #222;
-$text-dark: #999;
+@use './colors.scss';
 
 $themes: (
   light: (
-    color-bg: $bg-light,
-    color-text: $text-light,
+    color-bg: colors.$bg-light,
+    color-text: colors.$text-light,
   ),
   dark: (
-    color-bg: $bg-dark,
-    color-text: $text-dark,
+    color-bg: colors.$bg-dark,
+    color-text: colors.$text-dark,
   ),
 );
 
