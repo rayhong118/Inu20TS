@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.scss";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { StateProvider } from "./shared/tools/state";
 import {
@@ -58,12 +58,13 @@ const App: React.FC = () => {
       <BrowserRouter>
         <div className="app">
           <NavComponent />
-
-          <Route path="/" exact component={HomePageComponent} />
-          <Route path={ROUTES.HOME} exact component={HomePageComponent} />
-          <Route path={ROUTES.AUTH} component={AuthPageComponent} />
-          <Route path={ROUTES.CHAT} component={ChatPageComponent} />
-          <Route path={ROUTES.RESTAUTANT} component={RestaurantComponent} />
+          <Switch>
+            <Route path="/" exact component={HomePageComponent} />
+            <Route path={ROUTES.HOME} exact component={HomePageComponent} />
+            <Route path={ROUTES.AUTH} component={AuthPageComponent} />
+            <Route path={ROUTES.CHAT} component={ChatPageComponent} />
+            <Route path={ROUTES.RESTAUTANT} component={RestaurantComponent} />
+          </Switch>
           <Alert />
         </div>
       </BrowserRouter>

@@ -12,7 +12,7 @@ export const RestaurantPage = () => {
   }));
   const history = useHistory();
   useEffect(() => {
-    if (!credential) history.push(`${ROUTES.AUTH}?fromUrl=/chat`);
+    if (!credential) history.push(`${ROUTES.AUTH}?fromUrl=/restaurants`);
     // eslint-disable-next-line
   }, []);
 

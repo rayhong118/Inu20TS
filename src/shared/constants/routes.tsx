@@ -2,5 +2,5 @@ export const ROUTES = {
   HOME: "/home",
   AUTH: "/auth",
   CHAT: "/chat",
-  RESTAUTANT: "/restaurant",
+  RESTAUTANT: "/restaurants",
 };

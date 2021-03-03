@@ -17,6 +17,7 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { ROUTES } from "../../constants/routes";
 
 const Nav: React.FC = (props) => {
   const [{ theme }, dispatch] = useStateValue();
@@ -47,8 +48,8 @@ const Nav: React.FC = (props) => {
   }, [menuDisplayed, theme]);
 
   const routesList = [
-    { name: "Chat", link: "./chat" },
-    { name: "Restaurant Archives", link: "./restaurants" },
+    { name: "Chat", link: ROUTES.CHAT },
+    { name: "Restaurant Archives", link: ROUTES.RESTAUTANT },
     //{ name: "Comics", link: "./comics" },
   ];
 

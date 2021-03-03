@@ -1,7 +1,8 @@
 import React from "react";
+import { RestaurantPage } from "./restaurantPage";
 
 const RestaurantComponent = () => {
-  return <div className="page">this is Restautant page</div>;
+  return <RestaurantPage />;
 };
 
 export default RestaurantComponent;
