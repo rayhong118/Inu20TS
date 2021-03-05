@@ -34,7 +34,7 @@ const AuthPage = () => {
     if (user && redirUrl) {
       history.push(`${redirUrl}`);
     } // eslint-disable-next-line
-  }, [user, dispatch]);
+  }, [user, dispatch, credential]);
 
   const handleAuthError = (err: Error) => {
     dispatch(setAlert({ type: "warning", duration: 5, message: err.message }));
