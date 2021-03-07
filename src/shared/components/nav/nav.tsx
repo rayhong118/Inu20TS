@@ -18,6 +18,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ROUTES } from "../../constants/routes";
+import { setAlert } from "../../../redux/actions/alert";
 
 const Nav: React.FC = (props) => {
   const [{ theme }, dispatch] = useStateValue();
@@ -46,6 +47,14 @@ const Nav: React.FC = (props) => {
       }
     };
   }, [menuDisplayed, theme]);
+
+  useEffect(() => {
+    console.log(error);
+    if (error)
+      dispatch(
+        setAlert({ type: "warning", message: error.message, duration: 10 })
+      );
+  }, [error]);
 
   const routesList = [
     { name: "Chat", link: ROUTES.CHAT },

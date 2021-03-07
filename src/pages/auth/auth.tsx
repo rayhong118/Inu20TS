@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { AppState } from "../../redux/store";
 import { setUserCredential } from "../../redux/actions/auth";
 import { setAlert } from "../../redux/actions/alert";
+import Loading from "../../shared/components/loading";
 
 const AuthPage = () => {
   const [user, isAuthLoading, error] = useAuthState(firebase.auth());
@@ -84,7 +85,7 @@ const AuthPage = () => {
         handleAuthError(err);
       });
   };
-
+  if (isAuthLoading) return <Loading />;
   if (!credential)
     return (
       <div className="page auth-page">

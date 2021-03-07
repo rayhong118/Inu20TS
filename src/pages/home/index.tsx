@@ -1,4 +1,5 @@
 import React from "react";
+import Loading from "../../shared/components/loading";
 import "./home.scss";
 
 const HomePageComponent = () => {

@@ -5,6 +5,7 @@ import { AppState } from "../../redux/store";
 import { ROUTES } from "../../shared/constants/routes";
 import { RestaurantFilter } from "./restaurantFilter";
 import { RestaurantListing } from "./restaurantListing";
+import "./restaurant.scss";
 
 export const RestaurantPage = () => {
   const { credential } = useSelector((state: AppState) => ({
@@ -17,7 +18,7 @@ export const RestaurantPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="page restaurant-page">
       <RestaurantFilter />
       <RestaurantListing />
     </div>
