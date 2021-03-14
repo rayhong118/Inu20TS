@@ -3,5 +3,5 @@ import { useDispatch } from "react-redux";
 
 export const RestaurantFilter = () => {
   const dispatch = useDispatch();
-  return <div>filter</div>;
+  return <div className="restaurant-page-filter">filter</div>;
 };

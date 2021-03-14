@@ -25,6 +25,6 @@ $page-side-spacing: 5%;
 $page-top-spacing: 2rem;
 
 .page {
-  overflow: hidden;
+  overflow: scroll;
   padding: $page-top-spacing $page-side-spacing;
 }

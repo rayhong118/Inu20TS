@@ -6,11 +6,11 @@ import { setAlert } from "../../redux/actions/alert";
 export interface Restaurant {
   name: string;
   id: string;
-  prices: number[];
+  price: number;
   tags: RestaurantTag[];
   comments: RestaurantComment[];
   address: string;
-  mapUrl: string;
+  url: string;
 }
 interface RestaurantComment {
   userName: string;

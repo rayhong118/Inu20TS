@@ -6,6 +6,10 @@ const HomePageComponent = () => {
   return (
     <div className="page">
       <p>HomePage</p>
+      <p>
+        This personal site is built without using UI libraries (e.g. Boorstrap,
+        Material UI)
+      </p>
     </div>
   );
 };
