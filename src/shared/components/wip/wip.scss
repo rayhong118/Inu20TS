@@ -1,0 +1,21 @@
+.wip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-weight: bolder;
+  background: repeating-linear-gradient(
+    45deg,
+    yellow,
+    yellow 1rem,
+    black 1rem,
+    black 2rem
+  );
+
+  h2,
+  h4 {
+    padding: 0.25rem 1rem;
+    background-color: yellow;
+    margin: 0;
+  }
+}
