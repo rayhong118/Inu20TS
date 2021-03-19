@@ -58,7 +58,7 @@ const Nav: React.FC = (props) => {
 
   const routesList = [
     { name: "Chat", link: ROUTES.CHAT },
-    { name: "Restaurant Archives", link: ROUTES.RESTAUTANT },
+    { name: "Restaurant Archive", link: ROUTES.RESTAUTANT },
     //{ name: "Comics", link: "./comics" },
   ];
 
