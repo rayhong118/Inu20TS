@@ -32,7 +32,7 @@
   button {
     display: flex;
     gap: 1ch;
-    background-color: colors.$theme-color-main;
-    color: white;
+    background-color: transparent;
+    color: unset;
   }
 }
