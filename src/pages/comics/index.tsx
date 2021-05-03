@@ -1,8 +1,8 @@
 import React from "react";
 import { ComicsPage } from "./comics";
 
-const ComicsPageComponent = () => {
+const ComicsComponent = () => {
   return <ComicsPage />;
 };
 
-export default ComicsPageComponent;
+export default ComicsComponent;
