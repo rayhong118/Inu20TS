@@ -24,7 +24,7 @@ import { ROUTES } from "./shared/constants/routes";
 import Alert from "./shared/components/alert";
 import RestaurantComponent from "./pages/restaurant";
 
-const config = {
+const firebaseConfig = {
   apiKey: firebaseApiKey,
   authDomain: "dogheadportal.firebaseapp.com",
   databaseURL: "https://dogheadportal.firebaseio.com",
@@ -33,7 +33,7 @@ const config = {
   messagingSenderId: "978501106081",
   appId: "1:978501106081:web:6630866d2d7dc22408b3e0",
 };
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
 
 const App: React.FC = () => {
   const initState = {
