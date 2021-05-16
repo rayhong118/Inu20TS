@@ -14,6 +14,7 @@ import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
 import "firebase/functions";
+import "firebase/storage";
 import NavComponent from "./shared/components/nav";
 import HomePageComponent from "./pages/home";
 import AuthPageComponent from "./pages/auth";
@@ -34,7 +35,9 @@ const firebaseConfig = {
   messagingSenderId: "978501106081",
   appId: "1:978501106081:web:6630866d2d7dc22408b3e0",
 };
+
 firebase.initializeApp(firebaseConfig);
+const firebaseStorage = firebase.storage();
 
 const App: React.FC = () => {
   const initState = {
@@ -74,5 +77,5 @@ const App: React.FC = () => {
   );
 };
 
-export { firebase };
+export { firebase, firebaseStorage };
 export default App;
