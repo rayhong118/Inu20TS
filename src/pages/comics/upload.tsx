@@ -3,7 +3,7 @@ import { firebaseStorage } from "../../App";
 
 export const ComicsUploadPage = () => {
   const [imageFile, setImageFile] = useState<File>();
-  const [imageUrl, setImageUrl] = useState<any>();
+  const [imageUrl, setImageUrl] = useState<string>();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files && e.target.files[0];
@@ -30,15 +30,13 @@ export const ComicsUploadPage = () => {
       },
       () => {
         firebaseStorage
-          .ref("images")
+          .ref("comics")
           .child(imageFile.name)
           .getDownloadURL()
-          .then((firebaseDownloadUrl) =>
-            setImageUrl((prevObject: any) => ({
-              ...prevObject,
-              imgUrl: firebaseDownloadUrl,
-            }))
-          );
+          .then((firebaseDownloadUrl) => {
+            console.log(firebaseDownloadUrl);
+            setImageUrl(firebaseDownloadUrl);
+          });
       }
     );
   };
@@ -48,7 +46,7 @@ export const ComicsUploadPage = () => {
       Upload
       <form onSubmit={handleFileUpload}>
         <input type="file" accept=".jpg" onChange={handleFileChange} />
-        {imageUrl && <img src={imageUrl.imgUrl} alt="image preview" />}
+        {imageUrl && <img src={imageUrl} alt="preview" />}
         <button>Submit</button>
       </form>
     </div>
