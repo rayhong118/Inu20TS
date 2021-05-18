@@ -6,3 +6,9 @@ export interface Comic {
   imgUrl: string;
   creationDate: firestore.Timestamp;
 }
+
+export interface ComicFields {
+  title?: string;
+  description?: string;
+  creationDate?: string;
+}
