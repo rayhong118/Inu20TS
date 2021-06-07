@@ -1,7 +1,7 @@
 import firebase from "firebase";
 import React, { useState } from "react";
 import { firebaseStorage } from "../../App";
-import { Comic, ComicFields } from "./comic.model";
+import { Comic, ComicFields } from "./comics.services";
 
 export const ComicsUploadPage = () => {
   const [imageFile, setImageFile] = useState<File>();
@@ -67,7 +67,7 @@ export const ComicsUploadPage = () => {
         <label>Comic Upload</label>
         <input type="file" accept=".jpg" onChange={handleFileChange} />
         {imageUrl && <img src={imageUrl} alt="preview" />}
-        <label>Creation Date</label>
+        <label>Creation Date (YYYYMMDD)</label>
         <input type="text" name="creationDate" onChange={handleInputChange} />
         <button>Submit</button>
       </form>
