@@ -49,7 +49,7 @@ export const ComicsUploadPage = () => {
               title: formFields?.title || "",
               description: formFields?.description || "",
               imgUrl: firebaseDownloadUrl,
-              creationDate: new firebase.firestore.Timestamp(0, 0),
+              creationDateString: formFields?.creationDate || "",
             };
           });
       }
@@ -67,7 +67,7 @@ export const ComicsUploadPage = () => {
         <label>Comic Upload</label>
         <input type="file" accept=".jpg" onChange={handleFileChange} />
         {imageUrl && <img src={imageUrl} alt="preview" />}
-        <label>Creation Date (YYYYMMDD)</label>
+        <label>Creation Date (MM/DD/YYYY)</label>
         <input type="text" name="creationDate" onChange={handleInputChange} />
         <button>Submit</button>
       </form>

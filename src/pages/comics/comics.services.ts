@@ -7,7 +7,7 @@ export interface Comic {
   title: string;
   description: string;
   imgUrl: string;
-  creationDate: firestore.Timestamp;
+  creationDateString: string;
 }
 
 export interface ComicFields {
