@@ -1,19 +1,44 @@
 import React from "react";
 import "./App.scss";
-import { BrowserRouter, Switch } from "react-router-dom";
+import {
+  BrowserRouter,
+  Outlet,
+  Route,
+  RouterProvider,
+  Routes,
+  createBrowserRouter,
+} from "react-router-dom";
 import { useContext } from "react";
 import { AppContext, Context } from "./shared/Context";
+import { authenticationPage } from "./Authentication/AuthenticationPage";
+import { NavigationComponent } from "./Navigation/Navigation";
+import { Home } from "./Home/Home";
+
+function Layout() {
+  return (
+    <>
+      <header>
+        <NavigationComponent />
+      </header>
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
+}
 
 const App: React.FC = () => {
-  const context: AppContext = useContext(Context);
-
   return (
     <BrowserRouter>
-      <div className="app">
-        <Switch></Switch>
-      </div>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" Component={Home} />
+          <Route path="/authentication" Component={authenticationPage} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
+  //return <RouterProvider router={router} />;
 };
 
 export default App;
