@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fluentui/react-components": "^9.47.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
@@ -53,7 +54,7 @@
     "@types/react-redux": "^7.1.16",
     "react-scripts": "^5.0.1"
   },
-  "resolutions" :{
-    "nth-check":"2.0.1"
-   }
+  "resolutions": {
+    "nth-check": "2.0.1"
+  }
 }
