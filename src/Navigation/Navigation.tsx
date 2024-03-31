@@ -23,6 +23,8 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "start",
   },
+  navLink: { fontWeight: "bold" },
+  active: { color: "red" },
 });
 
 export const NavigationComponent = () => {
@@ -64,7 +66,9 @@ export const NavigationComponent = () => {
         </DrawerHeader>
         <DrawerBody className={styles.content}>
           {NavigationItemsList.map((navigationItem) => (
-            <NavLink to={navigationItem.path}>{navigationItem.text}</NavLink>
+            <NavLink to={navigationItem.path} className={styles.navLink}>
+              {navigationItem.text}
+            </NavLink>
           ))}
         </DrawerBody>
       </Drawer>
