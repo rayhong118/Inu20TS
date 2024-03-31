@@ -1,39 +1,39 @@
-@import "../src/shared/constants/themes.scss";
+// @import "../src/shared/constants/themes.scss";
 
-.app {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
+// .app {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100vh;
+// }
 
-body {
-  @include theme-aware("background-color", "color-bg");
-  @include theme-aware("color", "color-text");
-}
+// body {
+//   @include theme-aware("background-color", "color-bg");
+//   @include theme-aware("color", "color-text");
+// }
 
-// override scroll bar
-/* width */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-/* Track */
-::-webkit-scrollbar-track {
-  background: rgba(64, 64, 64, 0);
-}
+// // override scroll bar
+// /* width */
+// ::-webkit-scrollbar {
+//   width: 4px;
+//   height: 4px;
+// }
+// /* Track */
+// ::-webkit-scrollbar-track {
+//   background: rgba(64, 64, 64, 0);
+// }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
+// /* Handle */
+// ::-webkit-scrollbar-thumb {
+//   background: #888;
+// }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-@media (max-width: $mobile-desktop-breakpoint) {
-  ::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-  }
-}
+// /* Handle on hover */
+// ::-webkit-scrollbar-thumb:hover {
+//   background: #555;
+// }
+// @media (max-width: $mobile-desktop-breakpoint) {
+//   ::-webkit-scrollbar {
+//     width: 0px;
+//     height: 0px;
+//   }
+// }

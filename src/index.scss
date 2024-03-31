@@ -1,24 +1,24 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+// body {
+//   margin: 0;
+//   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+//     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+//     sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
 
-  button {
-    border: none;
-    padding: 0.5em 1em;
+//   button {
+//     border: none;
+//     padding: 0.5em 1em;
 
-    &:hover,
-    &:focus {
-      filter: brightness(0.8);
-    }
-  }
+//     &:hover,
+//     &:focus {
+//       filter: brightness(0.8);
+//     }
+//   }
 
-  a {
-    //all: unset;
-    text-decoration: none;
-    color: unset;
-  }
-}
+//   a {
+//     //all: unset;
+//     text-decoration: none;
+//     color: unset;
+//   }
+// }
