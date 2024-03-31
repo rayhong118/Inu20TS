@@ -1,29 +1,32 @@
 import React, { useState } from "react";
 import "./Navigation.scss";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   Button,
-  Dialog,
-  DialogBody,
-  DialogContent,
-  DialogSurface,
-  DialogTitle,
-  DialogTrigger,
   Drawer,
   DrawerBody,
   DrawerHeader,
   DrawerHeaderTitle,
+  Text,
   makeStyles,
-  shorthands,
-  tokens,
 } from "@fluentui/react-components";
-import {
-  TextColumnOneWide20Regular,
-  Dismiss24Regular,
-} from "@fluentui/react-icons";
+import { Navigation20Regular, Dismiss24Regular } from "@fluentui/react-icons";
+
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "start",
+  },
+});
 
 export const NavigationComponent = () => {
-  const navigate = useNavigate();
+  const styles = useStyles();
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
   interface NavigationItems {
     key: string;
@@ -32,7 +35,7 @@ export const NavigationComponent = () => {
   }
 
   const NavigationItemsList: NavigationItems[] = [
-    { key: "main", text: "Home page", path: "/" },
+    { key: "main", text: "Home", path: "/" },
     {
       key: "authentication",
       text: "Authentication",
@@ -41,8 +44,8 @@ export const NavigationComponent = () => {
   ];
 
   return (
-    <>
-      Doghead Portal
+    <div className={styles.root}>
+      <Text>Doghead Portal</Text>
       <Drawer
         open={isNavigationOpen}
         separator
@@ -59,24 +62,19 @@ export const NavigationComponent = () => {
             }
           />
         </DrawerHeader>
-        <DrawerBody>
+        <DrawerBody className={styles.content}>
           {NavigationItemsList.map((navigationItem) => (
-            <Button
-              appearance="secondary"
-              onClick={() => {
-                navigate(navigationItem.path);
-                setIsNavigationOpen(false);
-              }}
-            >
-              {navigationItem.text}
-            </Button>
+            <NavLink to={navigationItem.path}>{navigationItem.text}</NavLink>
           ))}
         </DrawerBody>
       </Drawer>
-      <Button appearance="secondary" onClick={() => setIsNavigationOpen(true)}>
-        <TextColumnOneWide20Regular />
+      <Button
+        appearance="secondary"
+        icon={<Navigation20Regular />}
+        onClick={() => setIsNavigationOpen(true)}
+      >
         Menu
       </Button>
-    </>
+    </div>
   );
 };

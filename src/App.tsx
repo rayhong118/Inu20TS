@@ -5,19 +5,6 @@ import { authenticationPage } from "./Authentication/AuthenticationPage";
 import { NavigationComponent } from "./Navigation/Navigation";
 import { Home } from "./Home/Home";
 
-// function Layout() {
-//   return (
-//     <>
-//       <header>
-//         <NavigationComponent />
-//       </header>
-//       <main>
-//         <Outlet />
-//       </main>
-//     </>
-//   );
-// }
-
 const App: React.FC = () => {
   return (
     <>
@@ -30,7 +17,6 @@ const App: React.FC = () => {
       </BrowserRouter>
     </>
   );
-  //return <RouterProvider router={router} />;
 };
 
 export default App;
