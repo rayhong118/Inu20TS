@@ -1,35 +1,41 @@
 import React, { useState } from "react";
 import "./Navigation.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   Button,
   Drawer,
   DrawerBody,
   DrawerHeader,
   DrawerHeaderTitle,
-  Text,
+  Tab,
+  TabList,
   makeStyles,
 } from "@fluentui/react-components";
-import { Navigation20Regular, Dismiss24Regular } from "@fluentui/react-icons";
+import {
+  Navigation20Regular,
+  Dismiss20Regular,
+  FluentIcon,
+  Home16Regular,
+  LockClosed16Regular,
+} from "@fluentui/react-icons";
 
 const useStyles = makeStyles({
   root: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
   },
   content: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "start",
+    width: "100%",
   },
   navLink: { fontWeight: "bold" },
-  active: { color: "red" },
 });
 
 export const NavigationComponent = () => {
   const styles = useStyles();
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
+  const navigate = useNavigate();
   interface NavigationItems {
     key: string;
     text: string;
@@ -47,7 +53,13 @@ export const NavigationComponent = () => {
 
   return (
     <div className={styles.root}>
-      <Text>Doghead Portal</Text>
+      <Button
+        appearance="transparent"
+        size="large"
+        onClick={() => navigate("/")}
+      >
+        Doghead Portal
+      </Button>
       <Drawer
         open={isNavigationOpen}
         separator
@@ -58,22 +70,32 @@ export const NavigationComponent = () => {
           <DrawerHeaderTitle
             action={
               <Button
-                icon={<Dismiss24Regular />}
+                appearance="subtle"
+                icon={<Dismiss20Regular />}
                 onClick={() => setIsNavigationOpen(false)}
               />
             }
           />
         </DrawerHeader>
         <DrawerBody className={styles.content}>
-          {NavigationItemsList.map((navigationItem) => (
-            <NavLink to={navigationItem.path} className={styles.navLink}>
-              {navigationItem.text}
-            </NavLink>
-          ))}
+          <TabList vertical size="large" appearance="subtle">
+            {NavigationItemsList.map((navigationItem) => (
+              <Tab
+                value={navigationItem.text}
+                onClick={() => {
+                  navigate(navigationItem.path);
+                  setIsNavigationOpen(false);
+                }}
+              >
+                {navigationItem.text}
+              </Tab>
+            ))}
+          </TabList>
         </DrawerBody>
       </Drawer>
       <Button
         appearance="secondary"
+        size="large"
         icon={<Navigation20Regular />}
         onClick={() => setIsNavigationOpen(true)}
       >
