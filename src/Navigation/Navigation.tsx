@@ -3,6 +3,7 @@ import "./Navigation.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   Button,
+  CompoundButton,
   Drawer,
   DrawerBody,
   DrawerHeader,
@@ -15,8 +16,9 @@ import {
   Navigation20Regular,
   Dismiss20Regular,
   FluentIcon,
-  Home16Regular,
   LockClosed16Regular,
+  BookOpen16Regular,
+  Food16Regular,
 } from "@fluentui/react-icons";
 
 const useStyles = makeStyles({
@@ -27,9 +29,13 @@ const useStyles = makeStyles({
   content: {
     display: "flex",
     flexDirection: "column",
-    width: "100%",
+    alignItems: "stretch",
   },
-  navLink: { fontWeight: "bold" },
+  navLink: {
+    display: "flex",
+    justifyContent: "stretch",
+    fontWeight: "bold",
+  },
 });
 
 export const NavigationComponent = () => {
@@ -46,8 +52,13 @@ export const NavigationComponent = () => {
     { key: "main", text: "Home", path: "/" },
     {
       key: "authentication",
-      text: "Authentication",
+      text: "Log in/Sign up",
       path: "/authentication",
+    },
+    {
+      key: "dineData",
+      text: "Dine data",
+      path: "/dinedata",
     },
   ];
 
@@ -78,19 +89,16 @@ export const NavigationComponent = () => {
           />
         </DrawerHeader>
         <DrawerBody className={styles.content}>
-          <TabList vertical size="large" appearance="subtle">
-            {NavigationItemsList.map((navigationItem) => (
-              <Tab
-                value={navigationItem.text}
-                onClick={() => {
-                  navigate(navigationItem.path);
-                  setIsNavigationOpen(false);
-                }}
-              >
-                {navigationItem.text}
-              </Tab>
-            ))}
-          </TabList>
+          {NavigationItemsList.map((navigationItem) => (
+            <NavLink
+              to={navigationItem.path}
+              onClick={() => {
+                setIsNavigationOpen(false);
+              }}
+            >
+              {navigationItem.text}
+            </NavLink>
+          ))}
         </DrawerBody>
       </Drawer>
       <Button
