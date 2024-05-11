@@ -44,7 +44,7 @@ export const NavigationComponent = () => {
     key: string;
     text: string;
     path: string;
-    icon: () => React.JSX.Element;
+    icon: React.JSX.Element;
   }
 
   const NavigationItemsList: NavigationItems[] = [
@@ -52,19 +52,19 @@ export const NavigationComponent = () => {
       key: "main",
       text: "Home",
       path: "/",
-      icon: () => <Home20Regular />,
+      icon: <Home20Regular />,
     },
     {
       key: "authentication",
       text: "Log in/Sign up",
       path: "/authentication",
-      icon: () => <LockOpen20Regular />,
+      icon: <LockOpen20Regular />,
     },
     {
       key: "dineData",
       text: "Dine data",
       path: "/dinedata",
-      icon: () => <Food20Regular />,
+      icon: <Food20Regular />,
     },
   ];
 
@@ -98,7 +98,7 @@ export const NavigationComponent = () => {
           <MenuList hasIcons>
             {NavigationItemsList.map((navigationItem) => (
               <MenuItem
-                icon={navigationItem.icon()}
+                icon={navigationItem.icon}
                 onClick={() => {
                   setIsNavigationOpen(false);
                   navigate(navigationItem.path);
