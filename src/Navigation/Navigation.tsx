@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import "./Navigation.scss";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Button,
-  CompoundButton,
   Drawer,
   DrawerBody,
   DrawerHeader,
   DrawerHeaderTitle,
-  Tab,
-  TabList,
+  MenuItem,
+  MenuList,
   makeStyles,
 } from "@fluentui/react-components";
 import {
   Navigation20Regular,
   Dismiss20Regular,
-  FluentIcon,
-  LockClosed16Regular,
-  BookOpen16Regular,
-  Food16Regular,
+  Home20Regular,
+  LockOpen20Regular,
+  Food20Regular,
 } from "@fluentui/react-icons";
 
 const useStyles = makeStyles({
@@ -46,19 +44,27 @@ export const NavigationComponent = () => {
     key: string;
     text: string;
     path: string;
+    icon: () => React.JSX.Element;
   }
 
   const NavigationItemsList: NavigationItems[] = [
-    { key: "main", text: "Home", path: "/" },
+    {
+      key: "main",
+      text: "Home",
+      path: "/",
+      icon: () => <Home20Regular />,
+    },
     {
       key: "authentication",
       text: "Log in/Sign up",
       path: "/authentication",
+      icon: () => <LockOpen20Regular />,
     },
     {
       key: "dineData",
       text: "Dine data",
       path: "/dinedata",
+      icon: () => <Food20Regular />,
     },
   ];
 
@@ -89,16 +95,19 @@ export const NavigationComponent = () => {
           />
         </DrawerHeader>
         <DrawerBody className={styles.content}>
-          {NavigationItemsList.map((navigationItem) => (
-            <NavLink
-              to={navigationItem.path}
-              onClick={() => {
-                setIsNavigationOpen(false);
-              }}
-            >
-              {navigationItem.text}
-            </NavLink>
-          ))}
+          <MenuList hasIcons>
+            {NavigationItemsList.map((navigationItem) => (
+              <MenuItem
+                icon={navigationItem.icon()}
+                onClick={() => {
+                  setIsNavigationOpen(false);
+                  navigate(navigationItem.path);
+                }}
+              >
+                {navigationItem.text}
+              </MenuItem>
+            ))}
+          </MenuList>
         </DrawerBody>
       </Drawer>
       <Button
