@@ -12,6 +12,7 @@
     "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.23",
     "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^4.3.0",
     "firebase": "^10.10.0",
     "firebaseui": "^6.1.0",
     "query-string": "^9.0.0",
@@ -23,13 +24,15 @@
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
     "sass": "^1.72.0",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "vite": "^5.4.2",
+    "vite-tsconfig-paths": "^4.3.2",
+    "web-vitals": "^4.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,8 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-redux": "^7.1.33",
-    "react-scripts": "^5.0.1"
+    "@types/react-redux": "^7.1.33"
   },
   "resolutions": {
     "nth-check": "2.0.1"
